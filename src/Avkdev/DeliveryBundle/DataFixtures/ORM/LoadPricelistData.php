@@ -32,7 +32,7 @@ class LoadPricelistData extends AbstractFixture implements OrderedFixtureInterfa
      */
     public function load(ObjectManager $manager)
     {
-        for ($i = 1; $i <=3; $i++) {
+        for ($i = 1; $i <=4; $i++) {
             for ($j = 0; $j <= 10; $j++) {
                 $pl = new Pricelist();
                 $pl->setCompany($this->getReference('Company'.$i))

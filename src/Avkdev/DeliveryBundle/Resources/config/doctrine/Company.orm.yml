@@ -31,4 +31,12 @@ Avkdev\DeliveryBundle\Entity\Company:
             comment: ''
             options:
                 default: 'database'
+        apiClass:
+            column: api_class
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            options:
+                default: ''
     lifecycleCallbacks: {  }

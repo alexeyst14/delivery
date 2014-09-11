@@ -5,3 +5,7 @@ avkdev_delivery_homepage:
 avkdev_delivery_calculate:
     path:     /calculate
     defaults: { _controller: AvkdevDeliveryBundle:Default:calculate }
+
+avkdev_delivery_calculate_api:
+    path:     /calculateApi
+    defaults: { _controller: AvkdevDeliveryBundle:Default:calculateApi }

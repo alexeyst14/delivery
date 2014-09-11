@@ -22,7 +22,7 @@ class CalculatorType extends AbstractType
     {
         $builder
             ->add('company_id', 'hidden', array('data' => '0'))
-            ->add('size', 'number')
+            ->add('size', 'number', array('required' => true))
             ->add('weight', 'number')
             ->add('parcel_cost', 'number')
             ->add('departure_city', 'entity', array('class' => 'AvkdevDeliveryBundle:City'))

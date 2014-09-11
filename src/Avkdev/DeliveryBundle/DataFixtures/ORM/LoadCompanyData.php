@@ -34,6 +34,7 @@ class LoadCompanyData extends AbstractFixture implements OrderedFixtureInterface
     {
         $arr = [
             'Новая Почта',
+            'Укрпочта',
             'Интайм',
             'Гюнсел',
         ];
@@ -41,14 +42,19 @@ class LoadCompanyData extends AbstractFixture implements OrderedFixtureInterface
         $companies = [];
 
         $dataSource = Company::DATA_SOURCE_API;
+        $i = 0;
         foreach ($arr as $v) {
             $company = new Company();
-            $company
-                ->setName($v)
-                ->setDataSource($dataSource);
+            $company->setName($v);
+            $company->setDataSource(Company::DATA_SOURCE_API);
+            if ($i > 1) {
+                $company->setDataSource(Company::DATA_SOURCE_DATABASE);
+            } else {
+                $company->setApiClass('ApiNewPostStrategy');
+            }
             $manager->persist($company);
             $companies[] = $company;
-            $dataSource = Company::DATA_SOURCE_DATABASE;
+            $i++;
         }
 
         $i = 1;

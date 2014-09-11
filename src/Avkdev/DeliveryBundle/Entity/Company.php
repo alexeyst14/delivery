@@ -89,4 +89,32 @@ class Company
         $this->dataSource = $dataSource;
         return $this;
     }
+    /**
+     * @var string
+     */
+    private $apiClass;
+
+
+    /**
+     * Set apiClass
+     *
+     * @param string $apiClass
+     * @return Company
+     */
+    public function setApiClass($apiClass)
+    {
+        $this->apiClass = $apiClass;
+
+        return $this;
+    }
+
+    /**
+     * Get apiClass
+     *
+     * @return string 
+     */
+    public function getApiClass()
+    {
+        return $this->apiClass;
+    }
 }

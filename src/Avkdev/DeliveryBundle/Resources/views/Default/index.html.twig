@@ -14,7 +14,10 @@
 
 {% block javascript %}
     <script type="text/javascript">
-        const URL_CALCULATE = "{{ path('avkdev_delivery_calculate') }}";
+        const URL_CALCULATE     = "{{ path('avkdev_delivery_calculate') }}";
+        const URL_CALCULATE_API = "{{ path('avkdev_delivery_calculate_api') }}";
+        const API_COMPANIES = {{ apiCompanies|raw}};
+        const IMAGES_PATH = "{{ asset('bundles/avkdevdelivery/images/') }}";
     </script>
     <script type="text/javascript" src="{{ asset('bundles/avkdevdelivery/js/calculator.js') }}"></script>
 {% endblock %}

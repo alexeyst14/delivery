@@ -12,8 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class CompanyRepository extends EntityRepository
 {
+    /**
+     * @return array
+     */
     public function getApiCompaniesList()
     {
-        return $this->findBy(array('dataSource' => 'api'));
+        $data = [];
+        foreach ($this->findBy(array('dataSource' => Company::DATA_SOURCE_API)) as $entity) {
+            $data[] = array(
+                'id'   => $entity->getId(),
+                'name' => $entity->getName(),
+            );
+        }
+        return $data;
     }
 }
