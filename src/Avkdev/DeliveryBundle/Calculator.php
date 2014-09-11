@@ -9,37 +9,45 @@
 namespace Avkdev\DeliveryBundle;
 
 use Avkdev\DeliveryBundle\Calculator\CalculatorStrategyInterface;
-use Avkdev\DeliveryBundle\Entity\Company;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * Delivery Calculator
+ * @package Avkdev\DeliveryBundle
+ */
 class Calculator extends ContainerAware
 {
-    private $calculateStrategy;
     /**
-     * @var Company
+     * @var Calculator\CalculatorStrategyInterface
      */
-    private $company;
+    private $calculateStrategy;
 
+    /**
+     * Constructor
+     * @param CalculatorStrategyInterface $strategy
+     */
     public function __construct(CalculatorStrategyInterface $strategy)
     {
         $this->calculateStrategy = $strategy;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function setContainer(ContainerInterface $container = null)
     {
         parent::setContainer($container);
         $this->calculateStrategy->setContainer($container);
     }
 
+    /**
+     * Calculates delivery cost and term
+     * @param $data
+     * @return mixed
+     */
     public function calculate($data)
     {
         return $this->calculateStrategy->calculate($data);
     }
-
-    public function setCompany(Company $company)
-    {
-        $this->company = $company;
-    }
-
 }

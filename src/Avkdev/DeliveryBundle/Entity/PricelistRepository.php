@@ -13,6 +13,11 @@ use Doctrine\ORM\Query\ResultSetMapping;
  */
 class PricelistRepository extends EntityRepository
 {
+    /**
+     * Returns delivery cost
+     * @param array $data
+     * @return array
+     */
     public function getDataByCalcForm(array $data)
     {
         return $this->createQueryBuilder('p')

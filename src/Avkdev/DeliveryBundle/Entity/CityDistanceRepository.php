@@ -12,6 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class CityDistanceRepository extends EntityRepository
 {
+    /**
+     * Returns distance index and delivery term
+     * @param $departureCity
+     * @param $arrivalCity
+     * @return array
+     */
     public function getDistanceIndex($departureCity, $arrivalCity)
     {
         return $this->createQueryBuilder('cd')

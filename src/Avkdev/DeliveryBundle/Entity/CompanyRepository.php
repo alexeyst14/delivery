@@ -13,6 +13,7 @@ use Doctrine\ORM\EntityRepository;
 class CompanyRepository extends EntityRepository
 {
     /**
+     * Returns company list with API method
      * @return array
      */
     public function getApiCompaniesList()

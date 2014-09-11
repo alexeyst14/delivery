@@ -24,6 +24,7 @@ footer { border-top: 1px solid #ccc; clear: both; text-align: center; padding: 1
 table#results {
     margin-top: 15px;
     border-collapse: collapse;
+    width: 600px;
 }
 table#results td, table#results th {
     border: 1px solid #880000;
@@ -31,4 +32,9 @@ table#results td, table#results th {
 }
 table#results th {
     font-weight: bold;
+}
+
+form div div label {
+    width: 200px;
+    float: left;
 }

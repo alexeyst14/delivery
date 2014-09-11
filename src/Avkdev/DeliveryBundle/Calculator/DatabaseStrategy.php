@@ -11,8 +11,16 @@ namespace Avkdev\DeliveryBundle\Calculator;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\DependencyInjection\ContainerAware;
 
+/**
+ * Class DatabaseStrategy
+ * Strategy extracts delivery data from Databse
+ * @package Avkdev\DeliveryBundle\Calculator
+ */
 class DatabaseStrategy extends ContainerAware implements CalculatorStrategyInterface
 {
+    /**
+     * {@inheritdoc}
+     */
     public function calculate(array $data)
     {
         /** @var $em EntityManager */

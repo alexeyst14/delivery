@@ -16,10 +16,7 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $form = $this->createForm(new CalculatorType());
-
-        /** @var $repo \Avkdev\DeliveryBundle\Entity\CompanyRepository */
         $repo = $this->getDoctrine()->getRepository('AvkdevDeliveryBundle:Company');
-
         return $this->render('AvkdevDeliveryBundle:Default:index.html.twig', array(
             'form' => $form->createView(),
             'apiCompanies' => json_encode($repo->getApiCompaniesList()),
@@ -29,10 +26,9 @@ class DefaultController extends Controller
     public function calculateAction(Request $request)
     {
         $form = $this->createForm(new CalculatorType())->submit($request);
-
         $ret = array('data' => array(), 'status' => 'ok');
         if ($form->isValid()) {
-            // delivery calculator
+            // delivery calculator with database strategy
             $calc = new Calculator(new Calculator\DatabaseStrategy());
             $calc->setContainer($this->container);
             $calc->calculate($form->getData());
@@ -40,7 +36,6 @@ class DefaultController extends Controller
         } else {
             $ret['status'] ='Invalid data';
         }
-
         return new JsonResponse($ret);
     }
 
@@ -51,8 +46,11 @@ class DefaultController extends Controller
         $company = $this->getDoctrine()
             ->getRepository('AvkdevDeliveryBundle:Company')
             ->find($form->get('company_id')->getData());
+
+        // specified strategy for company
         $strategy = '\\Avkdev\\DeliveryBundle\\Calculator\\' . $company->getApiClass();
 
+        // delivery calculator
         $calc = new Calculator(new $strategy);
         $calc->setContainer($this->container);
         $res = $calc->calculate($form->getData());
