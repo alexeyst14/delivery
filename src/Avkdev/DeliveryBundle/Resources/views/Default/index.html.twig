@@ -1,0 +1,20 @@
+{% extends 'AvkdevDeliveryBundle::layout.html.twig' %}
+
+{% block body %}
+{{ form(form) }}
+<table id="results">
+    <thead>
+        <th>Компания</th>
+        <th>Срок доставки</th>
+        <th>Стоимость</th>
+    </thead>
+    <tbody></tbody>
+</table>
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        const URL_CALCULATE = "{{ path('avkdev_delivery_calculate') }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('bundles/avkdevdelivery/js/calculator.js') }}"></script>
+{% endblock %}

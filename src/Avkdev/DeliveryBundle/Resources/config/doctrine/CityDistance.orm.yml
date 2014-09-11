@@ -1,0 +1,54 @@
+Avkdev\DeliveryBundle\Entity\CityDistance:
+    type: entity
+    table: city_distance
+    repositoryClass: Avkdev\DeliveryBundle\Entity\CityDistanceRepository
+    indexes:
+        fk_city_distance_city_idx:
+            columns:
+                - departure_city_id
+        fk_city_distance_city1_idx:
+            columns:
+                - arrival_city_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        costIdx:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            comment: ''
+            default: '0'
+            column: cost_idx
+        deliveryTime:
+            type: integer
+            nullable: true
+            default: '0'
+            column: delivery_time
+    manyToOne:
+        departureCity:
+            targetEntity: City
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                departure_city_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        arrivalCity:
+            targetEntity: City
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                arrival_city_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

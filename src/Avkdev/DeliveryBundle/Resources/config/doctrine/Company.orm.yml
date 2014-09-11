@@ -1,0 +1,34 @@
+Avkdev\DeliveryBundle\Entity\Company:
+    type: entity
+    table: company
+    repositoryClass: Avkdev\DeliveryBundle\Entity\CompanyRepository
+    uniqueConstraints:
+        name_UNIQUE:
+            columns:
+                - name
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+        dataSource:
+            column: data_source
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+            options:
+                default: 'database'
+    lifecycleCallbacks: {  }

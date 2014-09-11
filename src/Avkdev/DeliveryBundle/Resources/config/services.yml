@@ -1,0 +1,13 @@
+parameters:
+#    avkdev_delivery.example.class: Avkdev\DeliveryBundle\Example
+
+services:
+#    avkdev_delivery.example:
+#        class: %avkdev_delivery.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    avkdev_delivery.calculator:
+        class: Avkdev\DeliveryBundle\Calculator
+        calls:
+            - [setContainer, [@service_container]]
+

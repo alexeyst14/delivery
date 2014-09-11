@@ -1,0 +1,4 @@
+avkdev_delivery:
+    resource: "@AvkdevDeliveryBundle/Resources/config/routing.yml"
+    prefix:   /
+

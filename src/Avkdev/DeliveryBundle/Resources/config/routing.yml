@@ -1,0 +1,7 @@
+avkdev_delivery_homepage:
+    path:     /
+    defaults: { _controller: AvkdevDeliveryBundle:Default:index }
+
+avkdev_delivery_calculate:
+    path:     /calculate
+    defaults: { _controller: AvkdevDeliveryBundle:Default:calculate }

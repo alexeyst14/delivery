@@ -1,0 +1,54 @@
+Avkdev\DeliveryBundle\Entity\Pricelist:
+    type: entity
+    table: pricelist
+    repositoryClass: Avkdev\DeliveryBundle\Entity\PricelistRepository
+    indexes:
+        fk_pricelist_company1_idx:
+            columns:
+                - company_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        size:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            comment: ''
+        weight:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            comment: ''
+        parcelCost:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            comment: ''
+            column: parcel_cost
+        cost:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            comment: ''
+    manyToOne:
+        company:
+            targetEntity: Company
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                company_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
